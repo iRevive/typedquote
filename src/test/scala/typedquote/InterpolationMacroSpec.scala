@@ -2,6 +2,8 @@ package typedquote
 
 import org.scalatest.{Matchers, WordSpec}
 
+import scala.language.experimental.macros
+
 class InterpolationMacroSpec extends WordSpec with Matchers {
 
   implicit def toShowAdapter(sc: StringContext): TestShowAdapter = new TestShowAdapter(sc)

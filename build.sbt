@@ -10,7 +10,12 @@ lazy val root = (project in file("."))
 
     crossScalaVersions := Seq("2.11.12", "2.12.6"),
 
-    scalacOptions ++= commonOptions ++ warnOptions ++ lintOptions,
+    scalacOptions ++= {
+      CrossVersion.partialVersion(scalaVersion.value) match {
+        case Some((2, 12)) => commonOptions ++ warnOptions ++ lintOptions
+        case _ => Nil
+      }
+    },
 
     libraryDependencies ++= List(
       "org.scala-lang" %  "scala-reflect"   % scalaVersion.value,

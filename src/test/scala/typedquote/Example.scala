@@ -1,5 +1,7 @@
 package typedquote
 
+import scala.language.experimental.macros
+
 object Example extends ShowAdapterOps {
 
   case class User(name: String, age: Int)
